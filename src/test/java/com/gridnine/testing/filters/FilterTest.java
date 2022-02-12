@@ -39,4 +39,18 @@ public class FilterTest {
         assertTrue(result);
     }
 
+    @Test
+    void shouldProperlyMoreTwoHoursGroundTime() {
+        Segment segment = new Segment(LocalDateTime.now().minusHours(1), LocalDateTime.now());
+        Segment segment1 = new Segment(LocalDateTime.now().plusHours(2), LocalDateTime.now().plusHours(3));
+        List<Segment> listTest = new ArrayList<>();
+        listTest.add(segment);
+        listTest.add(segment1);
+        Flight flight = new Flight(listTest);
+        sut = new MoreTwoHoursGroundTime();
+
+        boolean result = sut.check(flight);
+
+        assertTrue(result);
+    }
 }
