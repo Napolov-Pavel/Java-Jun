@@ -25,4 +25,18 @@ public class FilterTest {
 
         assertTrue(result);
     }
+
+    @Test
+    void shouldProperlyArrivalBeforeDepartureDate() {
+        Segment segment = new Segment(LocalDateTime.now(), LocalDateTime.now().minusDays(1));
+        List<Segment> listTest = new ArrayList<>();
+        listTest.add(segment);
+        Flight flight = new Flight(listTest);
+        sut = new ArrivalBeforeDepartureDate();
+
+        boolean result = sut.check(flight);
+
+        assertTrue(result);
+    }
+
 }
