@@ -18,7 +18,8 @@ public class FlightFilter {
         }
         return instance;
     }
-    List<Flight> check(List<Flight> flightList, Filter filter) {
+
+    public List<Flight> check(List<Flight> flightList, Filter filter) {
         return flightList.stream()
                 .filter(filter::check)
                 .collect(Collectors.toList());
